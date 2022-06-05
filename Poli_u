@@ -1,0 +1,81 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+class Poli_u extends CI_Controller {
+  function __construct(){
+    parent::__construct();
+    $this->load->model('umum_model');
+  }
+
+  public function index(){
+    $data['Poli_u'] = $this->umum_model->getAll()->result();
+    $this->template->views('crud_umum/home_umum', $data);
+  }
+
+  public function tambah(){
+    $this->template->views('crud_umum/tambah_umum');
+  }
+
+  public function input(){
+    $NIK = $this->input->post('NIK');
+    $Tanggal = $this->input->post('Tanggal');
+    $Nama_Pasien = $this->input->post('Nama_Pasien');
+    $Jenis_Poli = $this->input->post('Jenis_Poli');
+
+    $data = array(
+      'NIK' => $NIK,
+      'Tanggal' => $Tanggal,
+      'Nama_Pasien' => $Nama_Pasien,
+      'Jenis_Poli' => $Jenis_Poli);
+    $this->umum_model->input_data($data,'poli_umum');
+    redirect('Poli_u/index');
+  }
+
+   public function edit($NIK){
+    $where = array('NIK' => $NIK);
+    $data['Nama_Pasien'] = $this->umum_model->edit_data($where,'poli_umum')->result();
+    $data['Jenis_Poli'] = $this->umum_model->edit_data($where,'poli_umum')->result();
+    $this->template->views('crud_umum/edit_umum',$data);
+  }
+
+  public function update(){
+    $NIK = $this->input->post('NIK');
+    $Nama_Pasien = $this->input->post('Nama_Pasien');
+    $Jenis_Poli = $this->input->post('Jenis_Poli');
+  
+    $data = array(
+      'NIK' => $NIK,
+      'Nama_Pasien' => $Nama_Pasien,
+      'Jenis_Poli' => $Jenis_Poli,
+      
+    );
+
+    $where = array('NIK' => $NIK);
+    $this->umum_model->update_data($where,$data,'poli_umum');
+    redirect('Poli_u');
+  }
+
+  public function hapus($id){
+    $where = array('NIK' => $NIK);
+    $this->umum_model->hapus_data($where,'poli_umum');
+    redirect('Poli_u/index');
+  }
+
+// public function index(){
+//     $this->load->model('Mahasiswa_model');
+//     $data['Mahasiswa'] = $this->Mahasiswa_model->get_data();
+//     $this->load->view('view_mahasiswa',$data);
+// }
+// public function index(){
+//     $this->load->model('prodi_model');
+//     $data['Prodi'] = $this->prodi_model->get_data();
+//     $this->load->view('view_prodi',$data);
+// }
+// public function angkatan(){
+//     $this->load->model('angkatan_model');
+//     $data['Angkatan'] = $this->angkatan_model->get_data();
+//     $this->load->view('view_angkatan',$data);
+// }
+
+
+
+}
