@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-lg-7">
+    <div class="p-5">
+      <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">Tambah Data</h1></div>
+        <form class="user" action="<?php echo base_url('Poli_u/input');?>" method="post">
+          <div class="form-group">
+            <input type="text" class="form-control form-control-user" id="NIK" name="NIK" placeholder="NIK Maksimal 10 Character" require>
+          </div>
+   <div class="container">
+      <div class="row">
+          <div class = "col-sm-12 col-lg-12 " id = "content" >    
+            <br>
+           <input type = "date" name = "Tanggal">  
+          </div>    
+  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>  
+  <script src ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+</body>  
+</html>  
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control form-control-name" id="Nama_Pasien" name="Nama_Pasien" placeholder="Nama_Pasien" require>
+            </div>
+            <div class="form-group">
+            <input type="text" class="form-control form-control-name" id="Jenis_Poli" name="Jenis_Poli" placeholder="Jenis_Poli" require>
+            </div>
+          <input type="submit" class="btn btn-success btn-icon-split" name="submit" value="Tambah">
+        </form><hr>
+        <div class="text-center">
+          <a class="small" href="index">Kembali</a>
+        </div></div></div></div>
